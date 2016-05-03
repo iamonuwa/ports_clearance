@@ -1,0 +1,168 @@
+//
+// Fullcalendar
+// --------------------------------------------------
+
+@import "fullcalendar-main.css";
+
+// Core variables and mixins
+@import "../../../stylesheet/less/variables.less";
+@import "../../../stylesheet/less/mixins.less";
+
+
+// Inside panel
+// -------------------------
+.panel.fullcalendar {
+    margin-bottom: 0;
+
+    .fc-view {
+        > table {
+            > thead > tr > td.fc-widget-header {
+                border-width: 0;
+            }
+        }
+    }
+    .fc-toolbar {
+        margin: 0;
+        padding: 15px;
+        border-bottom: 1px solid @border-color;
+    }
+    .fc-widget-content {
+        border-left-width: 0;
+    }
+}
+
+// Toolbar
+// -------------------------
+.fc-toolbar {
+    h2 {
+        margin-top: 3px;
+        font-size: 24px;
+    }
+    .fc-button {
+        display: inline-block;
+        margin-bottom: 0 !important;
+        font-weight: normal;
+        text-align: center;
+        cursor: pointer;
+        background-image: none;
+        color: lighten(@dark, 10%);
+        background-color: @gray;
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.8);
+        border: 1px solid darken(@gray, 6%);
+        white-space: nowrap;
+        padding: 7px 12px;
+        font-size: 13px;
+        line-height: normal;
+        height: auto;
+        box-shadow: none;
+    }
+    .fc-button.fc-state-disabled,
+    .fc-button.fc-state-disabled:hover {
+        cursor: default;
+        color: #aaa;
+    }
+    .fc-button.fc-state-hover {
+        color: @dark;
+        background-color: darken(@gray, 2%);
+        border: 1px solid darken(@gray, 6%);
+    }
+    .fc-button.fc-state-down,
+    .fc-button.fc-state-active {
+        box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+}
+
+// Popover
+// -------------------------
+.fc-popover {
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    overflow: hidden;
+    border-radius: @border-radius;
+    border: 1px solid @border-color;
+}
+.fc-popover .fc-header {
+    background-color: transparent !important;
+    padding: 6px 15px;
+}
+
+// Main table
+// -------------------------
+.fc th {
+    &.fc-day-header.fc-widget-header {
+        padding: 8px 0;
+        background-color: #fdfdfe;
+        text-transform: uppercase;
+    }
+    &.fc-axis.fc-widget-header {
+        background-color: #fdfdfe;
+    }
+}
+
+// Day Row (used within the header and the DayGrid)
+// -------------------------
+.fc-row {
+    .fc-bg {
+        .fc-other-month {
+            background-color: lighten(@gray, 2%);
+        }
+    }
+}
+
+// Global Event Styles
+// -------------------------
+.fc-event {
+    padding: 5px 10px;
+    display: block;
+    font-size: 11px;
+    border-radius: @border-radius;
+    background-color: lighten(@gray, 2%);
+    color: #444;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.05);
+
+    .fc-content {
+        .text-overflow();
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        bottom: -1px;
+        width: 5px;
+        background-color: @primary;
+        border-top-left-radius: @border-radius;
+        border-bottom-left-radius: @border-radius;
+    }
+
+    &.fc-not-start {
+        &:after {
+            display: none;
+        }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: #444;
+    }
+
+    &.fc-event-danger {
+        &:after { background-color: @danger; }
+    }
+
+    &.fc-event-warning {
+        &:after { background-color: @warning; }
+    }
+
+    &.fc-event-success {
+        &:after { background-color: @success; }
+    }
+}
+
+// BasicView
+// -------------------------
+.fc-row.fc-rigid {
+    overflow: visible;
+}

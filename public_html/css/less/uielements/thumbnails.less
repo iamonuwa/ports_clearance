@@ -1,0 +1,249 @@
+/* ----------------------------
+ *
+ * Thumbnails
+ *
+ * --------------------------- */
+.thumbnail {
+    position: relative;
+    padding: 0px;
+    border-width: 0px;
+    border-radius: @border-radius;
+
+    // Media
+    // -----------------------------------
+    .media {
+        position: relative;
+        overflow: hidden;
+        margin-top: 0px;
+
+        > img,
+        > iframe {
+            position: relative;
+            z-index: 2;
+            border-radius: @border-radius;
+            border: 0px;
+        }
+
+        > img[data-toggle="unveil"] {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+
+            &.unveiled {
+                opacity: 1;
+            }
+        }
+
+        > .indicator {
+            display: block;
+            z-index: 1;
+        }
+
+        > .overlay {
+            position: absolute;
+            z-index: 4;
+            border-radius: @border-radius;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: fade(@accent-base-color, 40%);
+            opacity: 0;
+            color: @white;
+            transition: opacity 0.2s ease;
+
+            &.show {
+                opacity: 1;
+            }
+
+            > .toolbar {
+                position: absolute;
+                top: 50%;
+                margin-top: -20px;
+                width: 100%;
+                text-align: center;
+
+                > .btn {
+                    width: 40px;
+                    line-height: 26px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    border: 0px;
+                    transform: scale(0);
+                    transition: transform 300ms ease;
+
+                    + .btn { transition: transform 250ms ease; }
+                    + .btn + .btn { transition: transform 200ms ease; }
+                    + .btn + .btn + .btn { transition: transform 150ms ease; }
+                    + .btn + .btn + .btn + .btn { transition: transform 100ms ease; }
+
+                    .touch & {
+                        transform: scale(1);
+                    }
+                }
+
+                .touch & {
+                    top: 15px;
+                    margin-top: 0px;
+                }
+            }
+
+            .touch & {
+                background-color: transparent;
+                opacity: 1;
+            }
+        }
+
+        .meta {
+            position: absolute;
+            z-index: 3;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            color: @white;
+            padding: 15px;
+            border-top-left-radius: @border-radius;
+            border-top-right-radius: @border-radius;
+
+            &.meta-hover {
+                top: -20%;
+                transition: top ease-in-out 0.3s;
+            }
+
+            &.bottom {
+                top: auto;
+                bottom: 0px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: @border-radius;
+                border-bottom-right-radius: @border-radius;
+
+                &.meta-hover {
+                    top: auto;
+                    bottom: -20%;
+                    transition: bottom ease-in-out 0.3s;
+                }
+            }
+
+            &.dark,
+            &.darken {
+                background-color: fade(#000, 50%);
+            }
+
+            &.light {
+                background-color: fade(white, 70%);
+            }
+        }
+
+        &:hover {
+            > .overlay {
+                opacity: 1;
+
+                > .toolbar {
+                    > .btn { transform: scale(1); }
+                }
+            }
+
+            .meta {
+                &.meta-hover {
+                    top: 0;
+                    transition: top ease-in-out 0.3s;
+                }
+
+                &.bottom {
+                    &.meta-hover {
+                        top: auto;
+                        bottom: 0;
+                        transition: bottom ease-in-out 0.3s;
+                    }
+                }
+            }
+        }
+    }
+
+    // Caption
+    // -----------------------------------
+    > .caption {
+        .tag {
+            font-size: 11px;
+            color: lighten(@dark, 30%);
+            margin: 0px;
+        }
+
+        ~ .caption {
+            border-top: 1px solid @border-color;
+        }
+    }
+
+    // Thumbnail album
+    // -----------------------------------
+    &.thumbnail-album {
+        border: 1px solid @border-color;
+        background-color: @white;
+        padding: 0px;
+        border-radius: @border-radius + 1;
+
+        > .media {
+            > img,
+            > .overlay {
+                border-radius: @border-radius @border-radius 0px 0px;
+            }
+        }
+
+        .meta {
+            padding: 9px;
+            margin: 0px;
+
+            > li {
+                display: table-cell;
+                vertical-align: middle;
+                width: 1%;
+            }
+        }
+    }
+}
+
+a.thumbnail {
+    position: relative;
+    padding: 4px;
+    border-width: 1px;
+
+    &:hover,
+    &:focus,
+    &.active {
+        border-color: @primary;
+    }
+}
+
+/*
+ * panel reset
+ */
+.panel {
+    .thumbnail {
+        border-radius: 0px;
+        border: 0px;
+        margin-bottom: 0px;
+
+        + .thumbnail {
+            margin-top: 5px;
+        }
+
+        .media {
+            img,
+            iframe {
+                border-radius: 0px;
+            }
+
+            > .overlay {
+                border-radius: 0px;
+            }
+        }
+
+        &.thumbnail-album {
+            .media {
+                > .overlay {
+                    border-radius: 0px;
+                }
+            }
+        }
+    }
+}

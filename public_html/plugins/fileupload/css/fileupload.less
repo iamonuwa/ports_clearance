@@ -1,0 +1,24 @@
+//
+// Blueimp File Uploader
+// --------------------------------------------------
+
+// Core variables and mixins
+@import "../../../stylesheet/less/variables.less";
+@import "../../../stylesheet/less/mixins.less";
+
+
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+}
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+    direction: ltr;
+    cursor: pointer;
+}

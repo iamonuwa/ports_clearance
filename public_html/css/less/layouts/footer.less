@@ -1,0 +1,46 @@
+/* ----------------------------
+ *
+ * Template Footer
+ *
+ * --------------------------- */
+
+/* Push right */
+.csstransforms3d.sidebar-open-ltr {
+    footer#footer {
+        transform: translate3d(@sidebar-width, 0, 0);
+    }
+}
+.no-csstransforms3d.sidebar-open-ltr {
+    footer#footer {
+        left: @sidebar-width;
+        right: auto;
+    }
+}
+/* Push left */
+.csstransforms3d.sidebar-open-rtl {
+    footer#footer {
+        transform: translate3d(-@sidebar-width, 0, 0);
+    }
+}
+.no-csstransforms3d.sidebar-open-rtl {
+    footer#footer {
+        right: @sidebar-width;
+        left: auto;
+    }
+}
+
+
+// Footer Main
+// -----------------------------------
+footer#footer {
+    position: absolute;
+    z-index: 997;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: @footer-height;
+    line-height: @footer-height;
+    background-color: fade(@white, 97%);
+    box-shadow: 0px -1px 0 0 rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}

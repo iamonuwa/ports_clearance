@@ -1,0 +1,87 @@
+// less variable
+@import "../../variables";
+@import "../../mixins.less";
+
+/* ----------------------------
+ *
+ * Layout - Fixed sidebar
+ * @note: fixed sidebar will automatically make header fixed and only work in screen-lg and screen-md
+ * @working viewport: screen-lg, screen-md
+ *
+ * --------------------------- */
+
+// Header main
+// -----------------------------------
+#header.navbar {
+    position: fixed;
+    box-shadow: 0 5px 5px -5px rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.03);
+
+    // If header is present
+    // -----------------------------------
+    ~ #main {
+        padding-top: @header-height * 2;
+    }
+}
+
+
+/* ----------------------------
+ *
+ * Fixed sidebar - screen-sm and up
+ *
+ * --------------------------- */
+@media (min-width: @screen-sm-min) {
+    // Header main
+    // -----------------------------------
+    #header.navbar {
+        // If header is present
+        // -----------------------------------
+        ~ #main {
+            padding-top: @header-height-md;
+        }
+        ~ .sidebar.sidebar-menu {
+            margin-top: @header-height-md;
+        }
+    }
+
+    // Sidebar menu
+    // -----------------------------------
+    .sidebar {
+        &.sidebar-menu {
+            :not(.sidebar-minimized) & {
+                position: fixed;
+
+                // sidebar viewport
+                // -----------------------------------
+                .viewport {
+                    position: absolute !important;
+                }
+
+                // sidebar content
+                // -----------------------------------
+                .content {
+                    position: absolute;
+                    overflow-y: scroll;
+                    -ms-overflow-style: -ms-autohiding-scrollbar;
+                    -webkit-overflow-scrolling: touch;
+                }
+            }
+
+            .sidebar-minimized & {
+                position: relative;
+
+                // sidebar viewport
+                // -----------------------------------
+                .viewport {
+                    position: relative !important;
+                }
+
+                // sidebar content
+                // -----------------------------------
+                .content {
+                    position: relative;
+                    overflow-y: visible;
+                }
+            }
+        }
+    }
+}

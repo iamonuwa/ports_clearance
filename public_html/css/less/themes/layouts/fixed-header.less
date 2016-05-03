@@ -1,0 +1,48 @@
+// less variable
+@import "../../variables";
+@import "../../mixins.less";
+
+/* ----------------------------
+ *
+ * Layout - Fixed header
+ * @working viewport: screen-lg, screen-md, screen-sm, screen-xs
+ *
+ * --------------------------- */
+
+// Header main
+// -----------------------------------
+#header.navbar {
+    position: fixed;
+    box-shadow: 0 5px 5px -5px rgba(0,0,0,.15), 0 1px 0 rgba(0,0,0,.03);
+}
+
+// Main content
+// -----------------------------------
+#main {
+    padding-top: @header-height * 2;
+}
+
+
+/* ----------------------------
+ *
+ * Fixed header - screen-sm and up
+ *
+ * --------------------------- */
+@media (min-width: @screen-sm-min) {
+    // Sidebar menu
+    // -----------------------------------
+    .sidebar {
+        &.sidebar-menu {
+            margin-top: @header-height-md;
+        }
+    }
+
+    // Main content
+    // -----------------------------------
+    #main {
+        padding-top: @header-height-md;
+        .frontend & {
+           padding-top: @header-height-frontend; 
+        }
+    }
+}

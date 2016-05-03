@@ -1,0 +1,178 @@
+/* ----------------------------
+ *
+ * Button & Link
+ *
+ * --------------------------- */
+/* anchor reset */
+a { 
+    color: @primary; 
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: darken(@primary, 5%);
+        outline: 0;
+        text-decoration: none;
+    }
+}
+
+/* button reset */
+.btn {
+    font-size: 13px;
+    padding: 7px 12px;
+    line-height: 18px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none !important;
+    }
+
+    &:active,
+    &.active {
+        box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    > .caret {
+        margin-top: -1px;
+    }
+}
+.btn-lg {
+    font-size: 18px;
+    padding: 10px 16px;
+}
+.btn-sm {
+    font-size: 12px;
+    padding: 5px 10px;
+}
+.btn-xs {
+    font-size: 11px;
+    padding: 1px 5px;
+}
+.btn.btn-link {
+    color: @primary;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: darken(@primary, 5%);
+        outline: 0;
+        text-decoration: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
+/* button group reset */
+.btn-group {
+    &.open {
+        .dropdown-toggle {
+            outline: none;
+            box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+        .btn-outline {
+            background-color: transparent !important;
+        }
+    }
+}
+
+/* button tag */
+.btn-tag {
+    .btn {
+        margin-bottom: 3px;
+    }
+}
+
+/* button rounded */
+.btn-rounded {
+    border-radius: 34px;
+
+    &.btn-ls { border-radius: 40px; }
+    &.btn-sm { border-radius: 30px; }
+    &.btn-xs { border-radius: 22px; }
+}
+
+/* button caret color */
+.btn-inverse .caret,
+.btn-teal .caret {
+    border-top-color: #fff;
+}
+
+/* btn default - color reset */
+.btn-default {
+    .button-variant(lighten(@dark, 15%); @default; @border-color);
+}
+
+/* btn primary - color reset */
+.btn-primary {
+    .button-variant(#fff; @primary; darken(@primary, 3%));
+}
+
+/* btn success - color reset */
+.btn-success {
+    .button-variant(#fff; @success; darken(@success, 3%));
+}
+
+/* btn info - color reset */
+.btn-info {
+    .button-variant(#fff; @info; darken(@info, 10%));
+}
+
+/* btn warning - color reset */
+.btn-warning {
+    .button-variant(#fff; @warning; darken(@warning, 3%));
+}
+
+/* btn danger - color reset */
+.btn-danger {
+    .button-variant(#fff; @danger; darken(@danger, 3%));
+}
+
+/* btn inverse - color reset */
+.btn-inverse {
+    .button-variant(#fff; @inverse; darken(@inverse, 3%));
+}
+
+/* btn teal - color reset */
+.btn-teal {
+    .button-variant(#fff; @teal; darken(@teal, 3%));
+}
+
+/* btn facebook - color reset */
+.btn-facebook {
+    .button-variant(#fff; @facebook; darken(@facebook, 3%));
+}
+
+/* btn twitter - color reset */
+.btn-twitter {
+    .button-variant(#fff; @twitter; darken(@twitter, 3%));
+}
+
+/* pagination */
+.pagination,
+.pager {
+    > li > a,
+    > li > span {
+        color: @primary;
+        border-color: @border-color;
+
+        &:hover,
+        &:focus {
+            color: darken(@primary, 3%);
+            background-color: @default;
+            border-color: darken(@border-color, 2%);
+        }
+    }
+
+    > .active > a,
+    > .active > span,
+    > .active > a:hover,
+    > .active > span:hover,
+    > .active > a:focus,
+    > .active > span:focus {
+        color: darken(@primary, 2%);
+        background-color: @default;
+        border-color: darken(@border-color, 2%);
+    }
+}

@@ -1,0 +1,30 @@
+/* ----------------------------
+ *
+ * Global
+ *
+ * --------------------------- */
+html { 
+    position: relative;
+    z-index: 1;
+    min-height: 100%;
+    letter-spacing: 0.1px;
+
+    body {
+        font-family: @font-family;
+        font-size: @font-size-global;
+        min-height: 100%;
+        background-color: @maincontent-base-color;
+        overflow-x: hidden;
+    }
+
+    &.frontend {
+        body {
+            font-size: 14px;
+        }
+    }
+}
+.app-loading,
+.sidebar-open-rtl,
+.sidebar-open-ltr {
+    overflow: hidden;
+}

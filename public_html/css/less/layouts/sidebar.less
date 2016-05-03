@@ -1,0 +1,156 @@
+/* ----------------------------
+ *
+ * Template Sidebar
+ *
+ * --------------------------- */
+/* Sidebar Transition  */
+.csstransforms3d.sidebar-open-ltr {
+    .sidebar-left {
+        transform: translate3d(@sidebar-width, 0, 0);
+    }
+}
+.no-csstransforms3d.sidebar-open-ltr {
+    .sidebar-left {
+        right: auto;
+        left: 0px;
+    }
+}
+.csstransforms3d.sidebar-open-rtl {
+    .sidebar-right {
+        transform: translate3d(-@sidebar-width, 0, 0);
+    }
+}
+.no-csstransforms3d.sidebar-open-rtl {
+    .sidebar-right {
+        left: auto;
+        right: 0px;
+    }
+}
+
+// Sidebar Main
+// -----------------------------------
+.sidebar {
+    position: fixed;
+    z-index: 1031;
+    top: 0px;
+    bottom: 0px;
+    width: @sidebar-width;
+    color: lighten(@sidebar-base-color, 30%);
+    background-color: @sidebar-base-color;
+    transition: transform 0.2s ease;
+
+    // sidebar 100% height
+    // -----------------------------------
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: inherit;
+        z-index: -1;
+        background-color: inherit;
+    }
+
+    // sidebar left
+    // -----------------------------------
+    &.sidebar-left {
+        left: -@sidebar-width;
+    }
+
+    // sidebar right
+    // -----------------------------------
+    &.sidebar-right {
+        right: -@sidebar-width;
+        .scrollbar { left: 0px !important; }
+    }
+
+    // sidebar header and footer
+    // -----------------------------------
+    .header,
+    .footer {
+        position: absolute;
+        background-color: @sidebar-base-color;
+        width: 100%;
+        padding: ((@header-height - 34) / 2) 15px;
+        min-height: @header-height;
+    }
+
+    // sidebar header
+    // -----------------------------------
+    .header {
+        top: 0px;
+        z-index: 10;
+
+        &:after {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            content: "";
+            border-bottom: 1px solid darken(@sidebar-base-color, 1.5%);
+        }
+
+        ~ .viewport,
+        ~ .content {
+            top: @header-height;
+        }
+    }
+
+    // sidebar footer
+    // -----------------------------------
+    .footer {
+        position: absolute;
+        bottom: 0px;
+        z-index: 11;
+
+        &:after {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            content: "";
+            border-top: 1px solid darken(@sidebar-base-color, 1.5%);
+        }
+
+        ~ .viewport,
+        ~ .content {
+            bottom: @header-height;
+        }
+    }
+
+    // sidebar viewport
+    // -----------------------------------
+    .viewport {
+        position: absolute !important;
+        top: 0px;
+        bottom: 0px;
+        width: 100% !important;
+    }
+
+    // sidebar content
+    // -----------------------------------
+    .content {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        overflow-y: scroll;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        -webkit-overflow-scrolling: touch;
+
+        > .wrapper {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        hr { border-color: lighten(@sidebar-base-color, 2%); }
+
+        .heading {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: lighten(@sidebar-base-color, 20%);
+            margin: 0px;
+            padding: 25px 25px 15px 25px;
+        }
+    }
+}

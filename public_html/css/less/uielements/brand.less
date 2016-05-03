@@ -1,0 +1,39 @@
+/* ----------------------------
+ *
+ * Brand
+ *
+ * --------------------------- */
+.logo-text,
+.logo-figure {
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    height: 50px;
+}
+.logo-text {
+    width: 110px;
+    background-image: url("../image/logo/logo-text.png");
+    background-repeat: no-repeat;
+    background-size: 110px 50px;
+
+    + .logo-figure {
+        margin-left: -13px;
+    }
+    &.inverse {
+        background-image: url("../image/logo/logo-text-inverse.png");
+    }
+}
+.logo-figure {
+    width: 32px;
+    background-image: url("../image/logo/logo-figure.png");
+    background-repeat: no-repeat;
+    background-position: 0px 8px;
+    background-size: 32px 32px;
+
+    + .logo-text {
+        margin-left: -13px;
+    }
+    &.inverse {
+        background-image: url("../image/logo/logo-figure-inverse.png");
+    }
+}

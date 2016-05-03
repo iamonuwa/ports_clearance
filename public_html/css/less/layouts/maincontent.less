@@ -1,0 +1,54 @@
+/* ----------------------------
+ *
+ * Template Main
+ *
+ * --------------------------- */
+/* Push right */
+.csstransforms3d.sidebar-open-ltr {
+    #main {
+        transform: translate3d(@sidebar-width, 0, 0);
+    }
+}
+.no-csstransforms3d.sidebar-open-ltr {
+    #main {
+        left: @sidebar-width;
+        right: auto;
+    }
+}
+/* Push left */
+.csstransforms3d.sidebar-open-rtl {
+    #main {
+        transform: translate3d(-@sidebar-width, 0, 0);
+    }
+}
+.no-csstransforms3d.sidebar-open-rtl {
+    #main {
+        right: @sidebar-width;
+        left: auto;
+    }
+}
+
+
+// main content
+// -----------------------------------
+#main {
+    position: relative;
+    transition: transform 0.2s ease;
+    .clearfix();
+
+    > .container-fluid,
+    > .container {
+        float: left;
+        width: 100%;
+        padding: 15px;
+        padding-bottom: 0;
+    }
+}
+
+// if footer is present
+// -----------------------------------
+footer#footer {
+    ~ #main {
+        padding-bottom: @footer-height;
+    }
+}

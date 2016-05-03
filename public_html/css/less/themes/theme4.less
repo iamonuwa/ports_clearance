@@ -1,0 +1,323 @@
+// less variable
+@import "../variables";
+@import "../mixins.less";
+
+/* ----------------------------
+ *
+ * Theme 1 - v1.0.0
+ *
+ * --------------------------- */
+
+// color variable
+@accent-color:                  #E25041;
+@navbar-header-bgcolor:         @accent-color;
+@navbar-toolbar-bgcolor:        #475577;
+@sidebar-bgcolor:               #fff;
+
+
+// Scrollbar
+// -----------------------------------
+.scrollbar {
+    border-radius: 7px !important;
+    right: 3px !important;
+}
+
+
+// Header Main
+// -----------------------------------
+#header.navbar {
+    // screen-xs only
+    // -----------------------------------
+    @media (max-width: @screen-xs-max) {
+        // Navbar header
+        // -----------------------------------
+        .navbar-header {
+            background-color: @navbar-toolbar-bgcolor;
+        }
+
+        // Navbar toolbar
+        // -----------------------------------
+        .navbar-toolbar {
+            .navbar-nav {
+                > .navbar-main {
+                    > a {
+                        color: fade(contrast(@navbar-toolbar-bgcolor), 60%);
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                        }
+
+                        &:active,
+                        &:focus { 
+                            background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                        }
+
+                        > .meta {
+                            > .label,
+                            > .badge,
+                            > .hasnotification {
+                                box-shadow: 0 0 0 1px @navbar-toolbar-bgcolor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // screen-sm and up
+    // -----------------------------------
+    @media (min-width: @screen-sm-min) {
+        // Navbar toolbar
+        // -----------------------------------
+        .navbar-toolbar {
+            background-color: @navbar-toolbar-bgcolor;
+
+            .navbar-nav {
+                > .navbar-main,
+                > li {
+                    > a {
+                        color: fade(contrast(@navbar-toolbar-bgcolor), 60%);
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                        }
+
+                        &:active,
+                        &:focus { 
+                            background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                        }
+
+                        > .meta {
+                            > .label,
+                            > .badge,
+                            > .hasnotification {
+                                box-shadow: 0 0 0 1px @navbar-toolbar-bgcolor;
+                            }
+                        }
+                    }
+
+                    &.open,
+                    &.active {
+                        > a {
+                            &,
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                                color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Navbar header
+        // -----------------------------------
+        .navbar-header {
+            background-color: @navbar-header-bgcolor;
+        }
+    }
+}
+
+
+// Sidebar Main
+// -----------------------------------
+.sidebar {
+    background-color: @sidebar-bgcolor;
+
+    // sidebar header and footer
+    // -----------------------------------
+    .header,
+    .footer {
+        background-color: @sidebar-bgcolor;
+        &:after {
+            border-color: darken(@sidebar-bgcolor, 5%);
+        }
+    }
+
+    // sidebar left
+    // -----------------------------------
+    &.sidebar-left {
+        .scrollbar { right: 3px !important; }
+
+        // Sidebar border-right
+        // -----------------------------------
+        &:before { box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.07); }
+    }
+
+    // sidebar right
+    // -----------------------------------
+    &.sidebar-right {
+        .scrollbar { left: 3px !important; }
+        
+        // Sidebar border-left
+        // -----------------------------------
+        &:before { box-shadow: -1px 0 0 0 rgba(0, 0, 0, 0.07); }
+    }
+
+    // sidebar content
+    // -----------------------------------
+    .content {
+        .heading {
+            color: fade(contrast(@sidebar-bgcolor), 30%);
+        }
+    }
+
+    // Media list reset
+    // -----------------------------------
+    .media-list {
+        > .media {
+            &:after {
+                left: 0;
+                border-color: darken(@sidebar-bgcolor, 3.5%);
+            }
+            &:active {
+                background-color: darken(@sidebar-bgcolor, 2%);
+            }
+        }
+    }
+
+    // Sidebar menu
+    // -----------------------------------
+    .topmenu,
+    .mainmenu {
+        > li {
+            // Line
+            // -----------------------------------
+            &:after {
+                left: 0;
+                border-color: darken(@sidebar-bgcolor, 3.5%);
+            }
+        }
+
+        li {
+            // Arrow - screen-sm & sidebar-minimized
+            // -----------------------------------
+            &:before {
+                .sidebar-minimized &,
+                .screen-sm & {
+                    right: -5px;
+                    border-color: transparent darken(@sidebar-bgcolor, 2%) transparent transparent !important;
+                    box-shadow: none !important;
+                }
+            }
+
+            // State - active
+            // -----------------------------------
+            &.active { 
+                background-color: @accent-color;
+                > a {
+                    &,
+                    &:hover {
+                        color: fade(contrast(@accent-color), 80%);
+                    }
+                    
+                    > .figure > [class^="ico-"],
+                    > .figure > [class*=" ico-"] {
+                        color: fade(contrast(@accent-color), 80%);
+                    }
+                }
+                &.open {
+                    > a {
+                        &,
+                        &:hover {
+                            color: fade(contrast(@accent-color), 80%);
+                        }
+                    }
+                }
+            }
+
+            // State - open
+            // -----------------------------------
+            &.open {
+                > a {
+                    color: fade(contrast(@sidebar-bgcolor), 60%);
+                }
+            }
+
+            // Menu link
+            // -----------------------------------
+            a {
+                color: fade(contrast(@sidebar-bgcolor), 50%);
+
+                &:hover {
+                    color: fade(contrast(@sidebar-bgcolor), 60%);
+                }
+            }
+
+            // Submenu - 2nd level
+            // -----------------------------------
+            > .submenu {
+                background-color: darken(@sidebar-bgcolor, 3%);
+
+                .sidebar-minimized &,
+                .screen-sm & {
+                    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.1);
+                    background-color: transparent;
+                    padding-left: 5px;
+                    border-radius: @border-radius;
+
+                    &:before {
+                        left: 5px;
+                        background-color: darken(@sidebar-bgcolor, 3%);
+                    }
+                }
+
+                &.submenu-header {
+                    color: fade(contrast(@sidebar-bgcolor), 70%);
+                }
+
+                &:after {
+                    border-color: darken(@sidebar-bgcolor, 10%);
+                    top: 15px;
+                    bottom: 15px;
+                }
+
+                > li {
+                    &.submenu-header {
+                        color: fade(contrast(@sidebar-bgcolor), 70%) !important;
+                    }
+                    a {
+                        &:hover {
+                            color: fade(contrast(@sidebar-bgcolor), 60%);
+                        }
+                    }
+                    &:after {
+                        background-color: darken(@sidebar-bgcolor, 10%);
+                        box-shadow: 0px 0px 0px 2px darken(@sidebar-bgcolor, 3%);
+                    }
+
+                    // State - active
+                    // -----------------------------------
+                    &.active { 
+                        &:after {
+                            background-color: @navbar-toolbar-bgcolor;
+                        }
+
+                        a {
+                            color: fade(contrast(@sidebar-bgcolor), 60%);
+                        }
+                    }
+                }
+
+                // Submenu - 3rd level
+                // -----------------------------------
+                .submenu {
+                    position: static;
+                    box-shadow: none;
+
+                    .sidebar-minimized &,
+                    .screen-sm & {
+                        padding-left: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

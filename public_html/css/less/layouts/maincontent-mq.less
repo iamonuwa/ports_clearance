@@ -1,0 +1,50 @@
+/* ----------------------------
+ *
+ * Template Sidebar - screen-sm and up
+ *
+ * --------------------------- */
+@media (min-width: @screen-sm-min) {
+    /* Push right */
+    .csstransforms3d.sidebar-open-ltr {
+        #main {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    .no-csstransforms3d.sidebar-open-ltr {
+        #main {
+            left: 0px;
+            right: auto;
+        }
+    }
+    /* Push left */
+    .csstransforms3d.sidebar-open-rtl {
+        #main {
+            transform: translate3d(-@sidebar-width, 0, 0);
+        }
+    }
+    .no-csstransforms3d.sidebar-open-rtl {
+        #main {
+            right: @sidebar-width;
+            left: auto;
+        }
+    }
+
+    // if sidebar-left is present
+    // -----------------------------------
+    .sidebar-left.sidebar-menu {
+        ~ #main {
+            margin-left: @sidebar-width;
+        }
+    }
+
+    // if screen-sm and sidebar-minimize
+    // -----------------------------------
+    .sidebar-minimized,
+    .screen-sm {
+        .sidebar-left.sidebar-menu {
+            ~ #main {
+                margin-left: @sidebar-collapse-width;
+            }
+        }
+    }
+}

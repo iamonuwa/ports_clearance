@@ -1,0 +1,296 @@
+// less variable
+@import "../variables";
+@import "../mixins.less";
+
+/* ----------------------------
+ *
+ * Theme 1 - v1.0.0
+ *
+ * --------------------------- */
+
+// color variable
+@accent-color:                  @primary;
+@navbar-header-bgcolor:         @facebook;
+@navbar-toolbar-bgcolor:        lighten(@navbar-header-bgcolor, 3%);
+@sidebar-bgcolor:               #415C71;
+
+
+// Scrollbar
+// -----------------------------------
+.scrollbar {
+    border-radius: 7px !important;
+    right: 3px !important;
+}
+
+
+// Header Main
+// -----------------------------------
+#header.navbar {
+    // Navbar header
+    // -----------------------------------
+    .navbar-header {
+        background-color: @navbar-header-bgcolor;
+    }
+
+    // screen-xs only
+    // -----------------------------------
+    @media (max-width: @screen-xs-max) {
+        // Navbar toolbar
+        // -----------------------------------
+        .navbar-toolbar {
+            .navbar-nav {
+                > .navbar-main {
+                    > a {
+                        color: fade(contrast(@navbar-toolbar-bgcolor), 60%);
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                        }
+
+                        &:active,
+                        &:focus { 
+                            background-color: darken(@navbar-toolbar-bgcolor, 5%);
+                        }
+
+                        > .meta {
+                            > .label,
+                            > .badge,
+                            > .hasnotification {
+                                box-shadow: 0 0 0 1px @navbar-toolbar-bgcolor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // screen-sm and up
+    // -----------------------------------
+    @media (min-width: @screen-sm-min) {
+        // Navbar toolbar
+        // -----------------------------------
+        .navbar-toolbar {
+            background-color: @navbar-toolbar-bgcolor;
+
+            .navbar-nav {
+                > .navbar-main,
+                > li {
+                    > a {
+                        color: fade(contrast(@navbar-toolbar-bgcolor), 60%);
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                        }
+
+                        &:active,
+                        &:focus { 
+                            background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                        }
+
+                        > .meta {
+                            > .label,
+                            > .badge,
+                            > .hasnotification {
+                                box-shadow: 0 0 0 1px @navbar-toolbar-bgcolor;
+                            }
+                        }
+                    }
+
+                    &.open,
+                    &.active {
+                        > a {
+                            &,
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                                color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Sidebar Main
+// -----------------------------------
+.sidebar {
+    background-color: @sidebar-bgcolor;
+    color: fade(contrast(@sidebar-bgcolor), 80%) !important;
+
+    // sidebar header and footer
+    // -----------------------------------
+    .header,
+    .footer {
+        background-color: @sidebar-bgcolor;
+        &:after {
+            border-color: darken(@sidebar-bgcolor, 5%);
+        }
+    }
+
+    // sidebar left
+    // -----------------------------------
+    &.sidebar-left {
+        .scrollbar { right: 3px !important; }
+    }
+
+    // sidebar right
+    // -----------------------------------
+    &.sidebar-right {
+        .scrollbar { left: 3px !important; }
+    }
+
+    // sidebar content
+    // -----------------------------------
+    .content {
+        .heading {
+            color: fade(contrast(@sidebar-bgcolor), 30%);
+        }
+    }
+
+    // Media list reset
+    // -----------------------------------
+    .media-list {
+        > .media {
+            .media-heading {
+                color: fade(contrast(@sidebar-bgcolor), 80%) !important;
+            }
+            .media-meta {
+                color: fade(contrast(@sidebar-bgcolor), 60%) !important;
+            }
+            &:after {
+                border-color: lighten(@sidebar-bgcolor, 2%);
+            }
+            &:active {
+                background-color: darken(@sidebar-bgcolor, 2%);
+            }
+        }
+    }
+
+    // Sidebar menu
+    // -----------------------------------
+    .topmenu,
+    .mainmenu {
+        > li {
+            // Line
+            // -----------------------------------
+            &:after {
+                border-color: lighten(@sidebar-bgcolor, 2%);
+            }
+        }
+
+        li {
+            // Arrow - screen-sm & sidebar-minimized
+            // -----------------------------------
+            &:before {
+                .sidebar-minimized &,
+                .screen-sm & {
+                    right: -5px;
+                    border-color: transparent darken(@sidebar-bgcolor, 2%) transparent transparent !important;
+                    box-shadow: none !important;
+                }
+            }
+
+            // State - active
+            // -----------------------------------
+            &.active { 
+                background-color: darken(@sidebar-bgcolor, 2%);
+                > a {
+                    color: fade(contrast(@sidebar-bgcolor), 70%);
+                    > .figure > [class^="ico-"],
+                    > .figure > [class*=" ico-"] {
+                        color: @navbar-toolbar-bgcolor;
+                    }
+                }
+            }
+
+            // State - open
+            // -----------------------------------
+            &.open {
+                > a {
+                    color: fade(contrast(@sidebar-bgcolor), 70%);
+                }
+            }
+
+            // Menu link
+            // -----------------------------------
+            a {
+                color: fade(contrast(@sidebar-bgcolor), 60%);
+                &:hover {
+                    color: fade(contrast(@sidebar-bgcolor), 80%);
+                }
+            }
+
+            // Submenu - 2nd level
+            // -----------------------------------
+            > .submenu {
+                background-color: darken(@sidebar-bgcolor, 2%);
+
+                .sidebar-minimized &,
+                .screen-sm & {
+                    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.1);
+                    background-color: transparent;
+                    padding-left: 5px;
+                    border-radius: @border-radius;
+
+                    &:before {
+                        left: 5px;
+                        background-color: darken(@sidebar-bgcolor, 2%);
+                    }
+                }
+
+                &:after {
+                    display: none;
+                }
+
+                > li {
+                    &.submenu-header {
+                        padding-left: 25px !important;
+                        color: fade(contrast(@sidebar-bgcolor), 70%) !important;
+                    }
+                    a {
+                        color: fade(contrast(@sidebar-bgcolor), 60%);
+                        &:hover {
+                            color: fade(contrast(@sidebar-bgcolor), 80%);
+                        }
+                    }
+                    &:after {
+                        display: none;
+                    }
+
+                    // State - active
+                    // -----------------------------------
+                    &.active { 
+                        &:after {
+                            background-color: @navbar-toolbar-bgcolor;
+                        }
+
+                        a {
+                            color: fade(contrast(@sidebar-bgcolor), 80%);
+                        }
+                    }
+                }
+
+                // Submenu - 3rd level
+                // -----------------------------------
+                .submenu {
+                    position: static;
+                    box-shadow: none;
+
+                    .sidebar-minimized &,
+                    .screen-sm & {
+                        padding-left: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

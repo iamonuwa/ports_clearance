@@ -1,0 +1,335 @@
+// less variable
+@import "../variables";
+@import "../mixins.less";
+
+/* ----------------------------
+ *
+ * Theme 2 - v1.0.0
+ *
+ * --------------------------- */
+
+// color variable
+@accent-color:                  @primary;
+@navbar-header-bgcolor:         @sidebar-bgcolor;
+@navbar-toolbar-bgcolor:        fade(#fff, 95%);
+@sidebar-bgcolor:               #2E2F41;
+
+
+// Scrollbar
+// -----------------------------------
+.scrollbar {
+    border-radius: 6px !important;
+    width: 5px !important;
+}
+
+
+// Header Main
+// -----------------------------------
+#header.navbar {
+    // Navbar header
+    // -----------------------------------
+    .navbar-header {
+        background-color: @navbar-header-bgcolor;
+    }
+
+    // screen-xs only
+    // -----------------------------------
+    @media (max-width: @screen-xs-max) {
+        // Navbar toolbar
+        // -----------------------------------
+        .navbar-toolbar {
+            .navbar-nav {
+                > .navbar-main {
+                    > a {
+                        color: fade(contrast(@navbar-header-bgcolor), 80%);
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: fade(contrast(@navbar-header-bgcolor), 85%);
+                        }
+
+                        &:active,
+                        &:focus { 
+                            background-color: darken(@navbar-header-bgcolor, 3%);
+                        }
+
+                        > .meta {
+                            > .label,
+                            > .badge,
+                            > .hasnotification {
+                                box-shadow: 0 0 0 1px @navbar-header-bgcolor;
+                            }
+                        }
+                    }
+                }
+
+                > li {
+                    > a {
+                        color: fade(contrast(@navbar-toolbar-bgcolor), 60%);
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                        }
+
+                        &:active,
+                        &:focus { 
+                            background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                        }
+
+                        > .meta {
+                            > .label,
+                            > .badge,
+                            > .hasnotification {
+                                box-shadow: 0 0 0 1px @navbar-toolbar-bgcolor;
+                            }
+                        }
+                    }
+
+                    &.open,
+                    &.active {
+                        > a {
+                            &,
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                                color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // screen-sm and up
+    // -----------------------------------
+    @media (min-width: @screen-sm-min) {
+        box-shadow: none;
+
+        // Navbar toolbar
+        // -----------------------------------
+        .navbar-toolbar {
+            background-color: @navbar-toolbar-bgcolor;
+            box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05);
+
+            .navbar-nav {
+                > .navbar-main,
+                > li {
+                    > a {
+                        color: fade(contrast(@navbar-toolbar-bgcolor), 60%);
+
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                        }
+
+                        &:active,
+                        &:focus { 
+                            background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                        }
+
+                        > .meta {
+                            > .label,
+                            > .badge,
+                            > .hasnotification {
+                                box-shadow: 0 0 0 1px @navbar-toolbar-bgcolor;
+                            }
+                        }
+                    }
+
+                    &.open,
+                    &.active {
+                        > a {
+                            &,
+                            &:hover,
+                            &:active,
+                            &:focus {
+                                background-color: darken(@navbar-toolbar-bgcolor, 3%);
+                                color: fade(contrast(@navbar-toolbar-bgcolor), 70%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Sidebar Main
+// -----------------------------------
+.sidebar {
+    background-color: @sidebar-bgcolor;
+    color: fade(contrast(@sidebar-bgcolor), 60%) !important;
+
+    // sidebar header and footer
+    // -----------------------------------
+    .header,
+    .footer {
+        background-color: @sidebar-bgcolor;
+        &:after {
+            border-color: darken(@sidebar-bgcolor, 3%);
+        }
+    }
+
+    // sidebar content
+    // -----------------------------------
+    .content {
+        .heading {
+            color: fade(contrast(@sidebar-bgcolor), 30%);
+        }
+    }
+
+    // Media list reset
+    // -----------------------------------
+    .media-list {
+        > .media {
+            .media-heading {
+                color: fade(contrast(@sidebar-bgcolor), 60%) !important;
+            }
+            .media-meta {
+                color: fade(contrast(@sidebar-bgcolor), 40%) !important;
+            }
+            &:after {
+                border-color: lighten(@sidebar-bgcolor, 2%);
+            }
+            &:active {
+                background-color: lighten(@sidebar-bgcolor, 2%);
+            }
+        }
+    }
+
+    // Sidebar menu
+    // -----------------------------------
+    .topmenu,
+    .mainmenu {
+        > li {
+            // Line
+            // -----------------------------------
+            &:after {
+                border-color: lighten(@sidebar-bgcolor, 2%);
+            }
+        }
+
+        li {
+            // Arrow - screen-sm & sidebar-minimized
+            // -----------------------------------
+            &:before {
+                .sidebar-minimized &,
+                .screen-sm & {
+                    border-color: transparent darken(@sidebar-bgcolor, 2%) transparent transparent !important;
+                    box-shadow: none !important;
+                }
+            }
+
+            // State - active
+            // -----------------------------------
+            &.active {
+                background-color: @accent-color;
+                > a {
+                    &,
+                    &:hover,
+                    &:focus {
+                        color: fade(contrast(@accent-color), 90%);
+                    }
+
+                    > .figure > [class^="ico-"],
+                    > .figure > [class*=" ico-"] {
+                        color: inherit;
+                    }
+                }
+            }
+
+            // State - open
+            // -----------------------------------
+            &.open {
+                > a {
+                    &,
+                    &:hover,
+                    &:focus {
+                        color: fade(contrast(@accent-color), 90%);
+                    }
+                }
+            }
+
+            // Menu link
+            // -----------------------------------
+            a {
+                color: fade(contrast(@sidebar-bgcolor), 50%);
+                &:hover {
+                    color: fade(contrast(@sidebar-bgcolor), 60%);
+                }
+            }
+
+            // Submenu - 2nd level
+            // -----------------------------------
+            > .submenu {
+                background-color: darken(@sidebar-bgcolor, 2%);
+
+                .sidebar-minimized &,
+                .screen-sm & {
+                    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.1);
+                    background-color: transparent;
+                    &:before {
+                        background-color: darken(@sidebar-bgcolor, 2%);
+                    }
+                }
+
+                &.submenu-header {
+                    color: fade(contrast(@sidebar-bgcolor), 70%);
+                }
+
+                &:after {
+                    border-color: darken(@sidebar-bgcolor, 5%);
+                    top: 15px;
+                    bottom: 15px;
+                }
+
+                > li {
+                    &.submenu-header {
+                        color: fade(contrast(@sidebar-bgcolor), 70%) !important;
+                    }
+                    a {
+                        color: fade(contrast(@sidebar-bgcolor), 50%) !important;
+                        &:hover {
+                            color: fade(contrast(@sidebar-bgcolor), 70%) !important;
+                        }
+                    }
+                    &:after {
+                        background-color: darken(@sidebar-bgcolor, 5%);
+                        box-shadow: 0px 0px 0px 2px darken(@sidebar-bgcolor, 2%);
+                    }
+
+                    // State - active
+                    // -----------------------------------
+                    &.active { 
+                        &:after {
+                            background-color: @accent-color;
+                        }
+
+                        a {
+                            color: fade(contrast(@sidebar-bgcolor), 70%);
+                        }
+                    }
+                }
+
+                // Submenu - 3rd level
+                // -----------------------------------
+                .submenu {
+                    position: static;
+                    box-shadow: none;
+
+                    .sidebar-minimized &,
+                    .screen-sm & {
+                        padding-left: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

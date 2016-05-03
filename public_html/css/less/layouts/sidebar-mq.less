@@ -1,0 +1,149 @@
+/* ----------------------------
+ *
+ * Template Sidebar - screen-sm and up
+ *
+ * --------------------------- */
+@media (min-width: @screen-sm-min) {
+    /* Sidebar Transition  */
+    .csstransforms3d.sidebar-open-ltr {
+        .sidebar-left {
+            &.sidebar-menu {
+                transform: translate3d(0, 0, 0);
+                &:before { display: none; }
+            }
+        }
+    }
+    .no-csstransforms3d.sidebar-open-ltr {
+        .sidebar-left {
+            &.sidebar-menu {
+                left: 0px;
+            }
+        }
+    }
+    .csstransforms3d.sidebar-open-rtl {
+        .sidebar-left {
+            &.sidebar-menu {
+                transform: translate3d(-@sidebar-width, 0, 0);
+                &:before { display: none; }
+            }
+        }
+    }
+    .no-csstransforms3d.sidebar-open-rtl {
+        .sidebar-left {
+            &.sidebar-menu {
+                left: -@sidebar-width;
+            }
+        }
+    }
+
+    /* Sidebar Main  */
+    .sidebar {
+        z-index: 200;
+
+        // sidebar left
+        // -----------------------------------
+        &.sidebar-left {
+            &.sidebar-menu {
+                left: auto;
+                float: left;
+
+                // if footer is present
+                // -----------------------------------
+                ~ footer#footer {
+                    left: @sidebar-width;
+
+                    .sidebar-minimized &,
+                    .screen-sm & {
+                        left: @sidebar-collapse-width;
+                    }
+                }
+            }
+        }
+
+        // sidebar header and footer
+        // -----------------------------------
+        .header,
+        .footer {
+            padding: ((@header-height-md - 34) / 2) 15px;
+            min-height: @header-height-md;
+        }
+        .header {
+            ~ .viewport,
+            ~ .content {
+                top: @header-height-md;
+            }
+        }
+        .footer {
+            ~ .viewport,
+            ~ .content {
+                bottom: @header-height-md;
+            }
+        }
+
+        // sidebar menu
+        // -----------------------------------
+        &.sidebar-menu {
+            position: relative;
+
+            // sidebar 100% height
+            // -----------------------------------
+            &:before {
+                position: fixed;
+            }
+
+            // sidebar header and footer
+            // -----------------------------------
+            .header,
+            .footer {
+                display: none;
+
+                ~ .viewport,
+                ~ .content {
+                    top: 0;
+                }
+            }
+
+            // sidebar viewport
+            // -----------------------------------
+            .viewport {
+                position: relative !important;
+            }
+
+            // sidebar content
+            // -----------------------------------
+            .content {
+                position: relative;
+                overflow-y: hidden;
+            }
+
+            // on screem-sm and sidebar-minimize
+            // -----------------------------------
+            .sidebar-minimized &,
+            .screen-sm & {
+                width: @sidebar-collapse-width;
+
+                // sidebar viewport
+                // -----------------------------------
+                .viewport {
+                    overflow: visible !important;
+
+                    > .scrollbar { display: none !important; }
+                }
+
+                // sidebar content
+                // -----------------------------------
+                .content {
+                    overflow: visible !important;
+
+                    .wrapper {
+                        visibility: hidden;
+                        overflow: hidden;
+                    }
+                    .heading {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

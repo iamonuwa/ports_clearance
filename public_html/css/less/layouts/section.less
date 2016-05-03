@@ -1,0 +1,42 @@
+/* ----------------------------
+ *
+ * Template Section
+ *
+ * --------------------------- */
+
+section.section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    .section-title {
+        text-transform: uppercase;
+    }
+
+    // Section header
+    // -----------------------------------
+    .section-header {
+        padding-bottom: 50px;
+
+        > .section-title {
+            display: inline-block;
+            margin: 0;
+            text-transform: uppercase;
+
+            &:after {
+                position: relative;
+                display: block;
+                content: '';
+                height: 3px;
+                width: 50%;
+                margin: 10px auto 0px auto;
+                background-color: @default;
+            }
+        }
+
+        &.no-border {
+            > .section-title:after {
+                display: none;
+            }
+        }
+    }
+}
